@@ -8,7 +8,16 @@ button.addEventListener("click" , () => {
 	const delay = Number(delayInput.value) ;
 
 	if(message && delay > 0 ){
-		call(message, delay )
+		// call(message, delay )
+		let prom = new Promise((resolve)=> {
+			setTimeout(() => {
+				resolve();
+			}, delay)
+		})
+
+		prom.then(() => {
+			output.innerText = message;
+		})
 	}
 })
 
@@ -18,10 +27,8 @@ async function call(message, delay){
 			resolve();
 		}, delay)
 	});
-
 	output.innerText = message;
 }
-
 
 
 
